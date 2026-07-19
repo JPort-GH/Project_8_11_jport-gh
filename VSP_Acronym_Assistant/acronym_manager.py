@@ -5,91 +5,95 @@ Date: 2026-06-25
 Purpose:
     Manages a collection of Acronym objects. Handles adding, searching,
     listing, saving, and loading acronym data for the VSP Acronym Assistant.
+    Uses external JSON files to reduce nesting and improve modularity.
 Resources:
-    No starter code used. Created for CSCI 1151 Project 1.
+    No starter code used. Created for CSCI 1151 Project 8–11.
 """
-from acronym import Acronym
+
 import json
+import os
+from acronym import Acronym
+
 
 class AcronymManager:
     """
     Manages a list of Acronym objects and provides operations for them.
+    Loads predefined acronyms from an external JSON file to avoid deep nesting.
     """
 
-    def __init__(self):
-        """Initialize the manager with an empty acronym list."""
+    def __init__(self, preload_file="preloaded_acronyms.json"):
+        """
+        Initialize the manager with an empty acronym list.
+        Load predefined acronyms from a JSON file if available.
+        """
         self.acronyms = []
 
-        # Preloaded VSP Acronyms
+        if os.path.exists(preload_file):
+            self._load_predefined(preload_file)
+        else:
+            print(f"Warning: Preload file '{preload_file}' not found. No acronyms loaded.")
 
-        # Strategic Business Units (SBUs) & Roles
-        self.add_acronym("SBU", "Strategic Business Unit", "SBUs & Roles")
-        self.add_acronym("CMF", "Commercial Markets Field", "SBUs & Roles")
-        self.add_acronym("CMM", "Commercial Mid-Market (formerly CMI)", "SBUs & Roles")
-        self.add_acronym("SA", "Strategic Alliance", "SBUs & Roles")
-        self.add_acronym("GMS", "Government Markets Services", "SBUs & Roles")
-        self.add_acronym("D2C", "Direct to Consumer", "SBUs & Roles")
-        self.add_acronym("MD", "Market Director (Seller)", "SBUs & Roles")
-        self.add_acronym("AM", "Account Manager", "SBUs & Roles")
-        self.add_acronym("SAM", "Senior Account Manager", "SBUs & Roles")
-        self.add_acronym("SSS", "Sales Support Specialist", "SBUs & Roles")
-        self.add_acronym("LSR", "Lead Service Rep", "SBUs & Roles")
-        self.add_acronym("LRR", "Lead Renewal Rep", "SBUs & Roles")
-        self.add_acronym("RVP", "Regional Vice President", "SBUs & Roles")
-        self.add_acronym("SCOS", "Senior Client Operations Specialist", "SBUs & Roles")
-        self.add_acronym("MC", "Membership Coordinator", "SBUs & Roles")
+    # ------------------------------------------------------------
+    # Load predefined acronyms (Chapter 9–11: JSON + modularization)
+    # ------------------------------------------------------------
 
-        # Systems, Tools & Technology
-        self.add_acronym("CASA", "Client Agreement & Structure Administration", "Systems")
-        self.add_acronym("SF", "Salesforce", "Systems")
-        self.add_acronym("EDI", "Electronic Data Integration/Interface", "Systems")
-        self.add_acronym("EM Tool", "Eligibility Management Tool", "Systems")
-        self.add_acronym("OC", "Office Central (SharePoint Documents)", "Systems")
-        self.add_acronym("E2C", "Email to Case", "Systems")
-        self.add_acronym("NRT", "National Reporting Tool", "Systems")
-        self.add_acronym("BEI", "Business Enablement & Intelligence", "Systems")
+    def _load_predefined(self, filename):
+        """
+        Load predefined acronyms from a JSON file.
 
-        # Membership & Onboarding Processes
-        self.add_acronym("MOB", "Membership Onboarding", "Membership")
-        self.add_acronym("CTA", "Converting to Automated", "Membership")
-        self.add_acronym("EVR", "Enrollment Verification Report (Tape)", "Membership")
-        self.add_acronym("MFC", "Membership File Contact", "Membership")
-        self.add_acronym("TPA", "Third Party Administrator", "Membership")
-        self.add_acronym("T/M/P", "Term, Merge & Pullout", "Membership")
-        self.add_acronym("OE", "Open Enrollment", "Membership")
-        self.add_acronym("BOR", "Broker of Record", "Membership")
-        self.add_acronym("IRAC", "Issue, Risk, Action, Conclusion", "Membership")
+        Expected JSON structure:
+        {
+            "file": "...",
+            "author": "...",
+            "date": "...",
+            "purpose": "...",
+            "source": "...",
+            "acronyms": [
+                {"short": "...", "definition": "...", "category": "..."},
+                ...
+            ]
+        }
+        """
+        try:
+            with open(filename, "r") as file:
+                data = json.load(file)
 
-        # Financial, Billing & Underwriting
-        self.add_acronym("ASP", "Administrative Service Plan (ASO)", "Financial")
-        self.add_acronym("IR", "Individually Rated", "Financial")
-        self.add_acronym("PLR", "Paid/Loss Ratio", "Financial")
-        self.add_acronym("IBNR", "Incurred But Not Reported", "Financial")
-        self.add_acronym("PG", "Performance Guarantee", "Financial")
-        self.add_acronym("PEPM", "Per Employee Per Month", "Financial")
-        self.add_acronym("PMPM", "Per Member Per Month", "Financial")
-        self.add_acronym("LTM", "Last Twelve Months", "Financial")
-        self.add_acronym("SIC", "Standard Industrial Classification", "Financial")
-        self.add_acronym("FEIN", "Federal Employer Identification Number", "Financial")
+            acronym_items = data.get("acronyms", [])
 
-        # Plan, Benefit & Network Terms
-        self.add_acronym("MBS", "Member Benefit Summary", "Benefits")
-        self.add_acronym("EOC", "Evidence of Coverage", "Benefits")
-        self.add_acronym("ECL", "Elective Contact Lens", "Benefits")
-        self.add_acronym("RFA", "Retail Frame Allowance", "Benefits")
-        self.add_acronym("COB", "Coordination of Benefits", "Benefits")
-        self.add_acronym("OON", "Out of Network", "Benefits")
-        self.add_acronym("GAP", "Group Approved Providers", "Benefits")
-        self.add_acronym("AFPR", "Affiliate Provider Retail Chains Partners", "Benefits")
-        self.add_acronym("PEC", "Primary Eyecare", "Benefits")
-        self.add_acronym("EMEC", "Essential Medical Eye Care", "Benefits")
-        self.add_acronym("DEP", "Diabetic Eyecare Program", "Benefits")
+            for item in acronym_items:
+                self.add_acronym(item["short"], item["definition"], item["category"])
+
+        except json.JSONDecodeError:
+            print(f"Error: '{filename}' contains invalid JSON.")
+        except Exception as e:
+            print(f"Unexpected error loading predefined acronyms: {e}")
+
+    # ------------------------------------------------------------
+    # Core functionality
+    # ------------------------------------------------------------
 
     def add_acronym(self, short: str, definition: str, category: str):
+        """
+        Add a new acronym to the internal list.
+
+        Parameters:
+            short (str): Acronym text (e.g., 'EDI').
+            definition (str): Full meaning of the acronym.
+            category (str): Category the acronym belongs to.
+        """
         new_acronym = Acronym(short, definition, category)
         self.acronyms.append(new_acronym)
 
     def search_acronym(self, short: str):
+        """
+        Search for an acronym by its short code.
+
+        Parameters:
+            short (str): Acronym text to search for.
+
+        Returns:
+            Acronym or None: Matching Acronym object if found.
+        """
         short = short.lower()
         for acronym in self.acronyms:
             if acronym.short.lower() == short:
@@ -97,34 +101,71 @@ class AcronymManager:
         return None
 
     def list_by_category(self, category: str):
+        """
+        Retrieve all acronyms belonging to a specific category.
+
+        Parameters:
+            category (str): Category name to filter by.
+
+        Returns:
+            list[Acronym]: Acronyms in the given category.
+        """
         category = category.lower()
         return [a for a in self.acronyms if a.category.lower() == category]
 
     def save_to_file(self, filename="acronyms.json"):
-        data = []
-        for a in self.acronyms:
-            data.append({
+        """
+        Save all acronym data to a JSON file.
+
+        Parameters:
+            filename (str): File path to save acronym data.
+        """
+        data = [
+            {
                 "short": a.short,
                 "definition": a.definition,
                 "category": a.category
-            })
-        with open(filename, "w") as file:
-            json.dump(data, file, indent=4)
+            }
+            for a in self.acronyms
+        ]
+
+        try:
+            with open(filename, "w") as file:
+                json.dump(data, file, indent=4)
+        except Exception as e:
+            print(f"Error saving acronyms: {e}")
 
     def load_from_file(self, filename="acronyms.json"):
+        """
+        Load acronym data from a JSON file and merge with existing data.
+
+        Behavior:
+            - Only new acronyms (based on short code) are added.
+            - Existing acronyms are not overwritten.
+        """
         try:
             with open(filename, "r") as file:
                 data = json.load(file)
 
-            self.acronyms = []
+            existing_shorts = {a.short for a in self.acronyms}
+
             for item in data:
-                self.acronyms.append(
-                    Acronym(item["short"], item["definition"], item["category"])
-                )
+                if item["short"] not in existing_shorts:
+                    self.add_acronym(item["short"], item["definition"], item["category"])
+
         except FileNotFoundError:
-            self.acronyms = []
+            print("No saved file found. Nothing loaded.")
+        except json.JSONDecodeError:
+            print(f"Error: '{filename}' contains invalid JSON.")
+        except Exception as e:
+            print(f"Unexpected error loading acronyms: {e}")
 
     def get_categories(self):
-        """Return a sorted list of unique categories."""
+        """
+        Return a sorted list of unique acronym categories.
+
+        Returns:
+            list[str]: Alphabetically sorted category names.
+        """
         categories = {a.category for a in self.acronyms}
         return sorted(categories)
