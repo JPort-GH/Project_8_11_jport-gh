@@ -1,0 +1,272 @@
+[
+    {
+        "short": "SBU",
+        "definition": "Strategic Business Unit",
+        "category": "SBUs & Roles"
+    },
+    {
+        "short": "CMF",
+        "definition": "Commercial Markets Field",
+        "category": "SBUs & Roles"
+    },
+    {
+        "short": "CMM",
+        "definition": "Commercial Mid-Market (formerly CMI)",
+        "category": "SBUs & Roles"
+    },
+    {
+        "short": "SA",
+        "definition": "Strategic Alliance",
+        "category": "SBUs & Roles"
+    },
+    {
+        "short": "GMS",
+        "definition": "Government Markets Services",
+        "category": "SBUs & Roles"
+    },
+    {
+        "short": "D2C",
+        "definition": "Direct to Consumer",
+        "category": "SBUs & Roles"
+    },
+    {
+        "short": "MD",
+        "definition": "Market Director (Seller)",
+        "category": "SBUs & Roles"
+    },
+    {
+        "short": "AM",
+        "definition": "Account Manager",
+        "category": "SBUs & Roles"
+    },
+    {
+        "short": "SAM",
+        "definition": "Senior Account Manager",
+        "category": "SBUs & Roles"
+    },
+    {
+        "short": "SSS",
+        "definition": "Sales Support Specialist",
+        "category": "SBUs & Roles"
+    },
+    {
+        "short": "LSR",
+        "definition": "Lead Service Rep",
+        "category": "SBUs & Roles"
+    },
+    {
+        "short": "LRR",
+        "definition": "Lead Renewal Rep",
+        "category": "SBUs & Roles"
+    },
+    {
+        "short": "RVP",
+        "definition": "Regional Vice President",
+        "category": "SBUs & Roles"
+    },
+    {
+        "short": "SCOS",
+        "definition": "Senior Client Operations Specialist",
+        "category": "SBUs & Roles"
+    },
+    {
+        "short": "MC",
+        "definition": "Membership Coordinator",
+        "category": "SBUs & Roles"
+    },
+    {
+        "short": "CASA",
+        "definition": "Client Agreement & Structure Administration",
+        "category": "Systems"
+    },
+    {
+        "short": "SF",
+        "definition": "Salesforce",
+        "category": "Systems"
+    },
+    {
+        "short": "EDI",
+        "definition": "Electronic Data Integration/Interface",
+        "category": "Systems"
+    },
+    {
+        "short": "EM Tool",
+        "definition": "Eligibility Management Tool",
+        "category": "Systems"
+    },
+    {
+        "short": "OC",
+        "definition": "Office Central (SharePoint Documents)",
+        "category": "Systems"
+    },
+    {
+        "short": "E2C",
+        "definition": "Email to Case",
+        "category": "Systems"
+    },
+    {
+        "short": "NRT",
+        "definition": "National Reporting Tool",
+        "category": "Systems"
+    },
+    {
+        "short": "BEI",
+        "definition": "Business Enablement & Intelligence",
+        "category": "Systems"
+    },
+    {
+        "short": "MOB",
+        "definition": "Membership Onboarding",
+        "category": "Membership"
+    },
+    {
+        "short": "CTA",
+        "definition": "Converting to Automated",
+        "category": "Membership"
+    },
+    {
+        "short": "EVR",
+        "definition": "Enrollment Verification Report (Tape)",
+        "category": "Membership"
+    },
+    {
+        "short": "MFC",
+        "definition": "Membership File Contact",
+        "category": "Membership"
+    },
+    {
+        "short": "TPA",
+        "definition": "Third Party Administrator",
+        "category": "Membership"
+    },
+    {
+        "short": "T/M/P",
+        "definition": "Term, Merge & Pullout",
+        "category": "Membership"
+    },
+    {
+        "short": "OE",
+        "definition": "Open Enrollment",
+        "category": "Membership"
+    },
+    {
+        "short": "BOR",
+        "definition": "Broker of Record",
+        "category": "Membership"
+    },
+    {
+        "short": "IRAC",
+        "definition": "Issue, Risk, Action, Conclusion",
+        "category": "Membership"
+    },
+    {
+        "short": "ASP",
+        "definition": "Administrative Service Plan (ASO)",
+        "category": "Financial"
+    },
+    {
+        "short": "IR",
+        "definition": "Individually Rated",
+        "category": "Financial"
+    },
+    {
+        "short": "PLR",
+        "definition": "Paid/Loss Ratio",
+        "category": "Financial"
+    },
+    {
+        "short": "IBNR",
+        "definition": "Incurred But Not Reported",
+        "category": "Financial"
+    },
+    {
+        "short": "PG",
+        "definition": "Performance Guarantee",
+        "category": "Financial"
+    },
+    {
+        "short": "PEPM",
+        "definition": "Per Employee Per Month",
+        "category": "Financial"
+    },
+    {
+        "short": "PMPM",
+        "definition": "Per Member Per Month",
+        "category": "Financial"
+    },
+    {
+        "short": "LTM",
+        "definition": "Last Twelve Months",
+        "category": "Financial"
+    },
+    {
+        "short": "SIC",
+        "definition": "Standard Industrial Classification",
+        "category": "Financial"
+    },
+    {
+        "short": "FEIN",
+        "definition": "Federal Employer Identification Number",
+        "category": "Financial"
+    },
+    {
+        "short": "MBS",
+        "definition": "Member Benefit Summary",
+        "category": "Benefits"
+    },
+    {
+        "short": "EOC",
+        "definition": "Evidence of Coverage",
+        "category": "Benefits"
+    },
+    {
+        "short": "ECL",
+        "definition": "Elective Contact Lens",
+        "category": "Benefits"
+    },
+    {
+        "short": "RFA",
+        "definition": "Retail Frame Allowance",
+        "category": "Benefits"
+    },
+    {
+        "short": "COB",
+        "definition": "Coordination of Benefits",
+        "category": "Benefits"
+    },
+    {
+        "short": "OON",
+        "definition": "Out of Network",
+        "category": "Benefits"
+    },
+    {
+        "short": "GAP",
+        "definition": "Group Approved Providers",
+        "category": "Benefits"
+    },
+    {
+        "short": "AFPR",
+        "definition": "Affiliate Provider Retail Chains Partners",
+        "category": "Benefits"
+    },
+    {
+        "short": "PEC",
+        "definition": "Primary Eyecare",
+        "category": "Benefits"
+    },
+    {
+        "short": "EMEC",
+        "definition": "Essential Medical Eye Care",
+        "category": "Benefits"
+    },
+    {
+        "short": "DEP",
+        "definition": "Diabetic Eyecare Program",
+        "category": "Benefits"
+    },
+    {
+        "short": "CQA",
+        "definition": "Central Quoting Application. A new system whose rollout will fundamentally change the Rate Exception Approval Procedure, especially how leadership reviews and approves write-offs and IRAC analysis.",
+        "category": "Systems"
+    }
+]

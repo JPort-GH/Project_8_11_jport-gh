@@ -4,13 +4,16 @@ Author: Janet Portillo (Jport-GH)
 Date: 2026-06-25
 Purpose:
     Defines the Acronym class used in the VSP Acronym Assistant project.
-    This class represents a single acronym, its definition, and its category.
+    Includes a subclass (SystemAcronym) to demonstrate inheritance as required
+    in Chapters 8–11. Represents acronym entries with their definition and category.
 Resources:
-    No starter code used. Created for CSCI 1151 Project 1.
+    No starter code used. Created for CSCI 1151 Project 8–11.
 """
+
 class Acronym:
     """
     Represents a single acronym entry with its definition and category.
+    Base class for all acronym types.
     """
 
     def __init__(self, short: str, definition: str, category: str):
@@ -30,4 +33,23 @@ class Acronym:
         """
         Return a readable string representation of the acronym.
         """
-        return f"{self.short}: {self.definition} ({self.category})" 
+        return f"{self.short}: {self.definition} ({self.category})"
+
+
+class SystemAcronym(Acronym):
+    """
+    Represents acronyms specifically used for systems/tools.
+    Demonstrates inheritance from the Acronym base class.
+    """
+
+    def __init__(self, short: str, definition: str):
+        """
+        Initialize a SystemAcronym object.
+
+        Parameters:
+            short (str): Acronym text (e.g., 'EDI').
+            definition (str): Full meaning of the acronym.
+
+        Category is automatically set to 'Systems'.
+        """
+        super().__init__(short, definition, "Systems")
